@@ -9,8 +9,7 @@ if __name__ == "__main__":
     Ir = read_colour_image("images/cones_image_06.png")
     bbox = np.array([[0, 449], [0, 374]])
 
-    # Id = compute_disparity_image(Il, Ir, bbox)
-    Id = read_grayscale_image("images/disparity_estimate.png")
+    Id = compute_disparity_image(Il, Ir, bbox)
     It = read_grayscale_image("images/cones_disp_02.png")
 
     rms = compute_disparity_score(It, Id)
