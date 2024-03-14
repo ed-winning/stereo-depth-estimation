@@ -4,6 +4,31 @@ from tqdm import tqdm
 
 
 def compute_disparity_image(Il, Ir, bbox, window_size=7):
+    """
+    Returns a disparity image estimated from two stereo images.
+     
+    A local, fixed-support stereo correspondence algorithm is used for estimation.
+    Specifically, a window-based method using the sum-of-absolute-difference (SAD) similarity
+    measure is implemented.
+
+    Parameters:
+    Il (numpy.ndarray): left stereo image.
+        Shape: (height, width, channels)
+
+    Ir (numpy.ndarray): right stereo image.
+        Shape: (height, width, channels)
+
+    bbox (numpy.ndarray): bounding box relative to the left image containing top left corner and
+    bottom right corner (inclusive).
+        Shape: (2, 2), where the first column is the top left corner and the second column is the
+        bottom right corner. Height is v and width is u.
+
+    window_size (int): the size of the square window used to compute SAD.
+
+    Returns:
+    (numpy.ndarray): estimated disparity image
+        Shape: (v, u)
+    """
     x_i = bbox[0, 0]
     x_f = bbox[0, 1]
     y_i = bbox[1, 0]
