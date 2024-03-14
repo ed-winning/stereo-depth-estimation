@@ -2,6 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 
+from utils import write_image
+
 
 def compute_disparity_image(Il, Ir, bbox, window_size=7):
     """
@@ -83,7 +85,7 @@ def compute_disparity_score(It, Id):
     return rms
 
 
-def view_disparity(image):
+def visualize_disparity(image, title, save_visualization=False, filepath=None):
     # Adjust image
     contrast = 3
     brightness = 50
@@ -94,4 +96,8 @@ def view_disparity(image):
 
     # Show image
     plt.imshow(adjusted_image, cmap="gray", vmin=0, vmax=255)
+    plt.title(title)
     plt.show()
+
+    if save_visualization and filepath is not None:
+        write_image(filepath, adjusted_image)
