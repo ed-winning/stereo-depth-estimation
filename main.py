@@ -18,7 +18,15 @@ if __name__ == "__main__":
 
     write_image("images/disparity_estimate.png", Id)
 
-    visualize_disparity(It, "Ground Truth Disparity", save_visualization=True,
-                        filepath="images/visualize_cones_disp_02.png")
-    visualize_disparity(Id, "Estimated Disparity", save_visualization=True,
-                        filepath="images/visualize_disparity_estimate.png")
+    visualize_disparity(
+        It,
+        "Ground Truth Disparity",
+        save_visualization=True,
+        filepath="images/visualize_cones_disp_02.png",
+    )
+    visualize_disparity(
+        Id,
+        "Estimated Disparity",
+        save_visualization=True,
+        filepath="images/visualize_disparity_estimate.png",
+    )

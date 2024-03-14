@@ -8,7 +8,7 @@ from utils import write_image
 def compute_disparity_image(Il, Ir, bbox, window_size=7):
     """
     Returns a disparity image estimated from two stereo images.
-     
+
     A local, fixed-support stereo correspondence algorithm is used for estimation.
     Specifically, a window-based method using the sum-of-absolute-difference (SAD) similarity
     measure is implemented.
@@ -41,7 +41,9 @@ def compute_disparity_image(Il, Ir, bbox, window_size=7):
     Id = np.zeros((v, u), dtype=int)
 
     r = window_size // 2
-    total_iterations = len(range(y_i + r, y_f - r + 1)) * len(range(x_i + r, x_f - r + 1))
+    total_iterations = len(range(y_i + r, y_f - r + 1)) * len(
+        range(x_i + r, x_f - r + 1)
+    )
     progress_bar = tqdm(total=total_iterations)
     for y in range(y_i + r, y_f - r + 1):
         for x in range(x_i + r, x_f - r + 1):
